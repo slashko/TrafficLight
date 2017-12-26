@@ -9,29 +9,30 @@ import java.util.Set;
 
 public class TrafficLight {
     private final int MIN = 60000; //Минуты
-    private LinkedHashMap<String, Integer> time = new LinkedHashMap<>(3, 1.1f);
+    private LinkedHashMap<String, Integer> timeColor = new LinkedHashMap<>(3, 1.1f);
 
+    //Можно создать пустой конструктор и вызывать настройки из Main
     public TrafficLight() {
         settingTrafficLight();
     }
 
-    public TrafficLight(LinkedHashMap<String, Integer> time) {
-        this.time = time;
+    public TrafficLight(LinkedHashMap<String, Integer> timeColor) {
+        this.timeColor = timeColor;
         start();
     }
 
     private void settingTrafficLight() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        time.put("зеленый", 0);
-        time.put("желтый", 0);
-        time.put("красный", 0);
+        timeColor.put("зеленый", 0);
+        timeColor.put("желтый", 0);
+        timeColor.put("красный", 0);
 
-        Set<Map.Entry<String, Integer>> set = time.entrySet();
+        Set<Map.Entry<String, Integer>> set = timeColor.entrySet();
         for (Map.Entry<String, Integer> o : set) {
             while (true) {
                 try {
                     System.out.println("Сколько минут горит " + o.getKey() + "?");
-                    time.put(o.getKey(), Integer.parseInt(reader.readLine()) * MIN);
+                    timeColor.put(o.getKey(), Integer.parseInt(reader.readLine()) * MIN);
                     break;
                 } catch (NumberFormatException | IOException e1) {
                     System.out.println("Это не число");
@@ -42,7 +43,7 @@ public class TrafficLight {
     }
 
     private void start() {
-        Set<Map.Entry<String, Integer>> set = time.entrySet();
+        Set<Map.Entry<String, Integer>> set = timeColor.entrySet();
         for (Map.Entry<String, Integer> o : set) {
             try {
                 System.out.println("Загорелся " + o.getKey());

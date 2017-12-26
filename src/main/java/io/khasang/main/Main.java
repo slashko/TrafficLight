@@ -1,5 +1,9 @@
 package io.khasang.main;
 
 public class Main {
-    TrafficLight svet = new TrafficLight();
+
+    public static void main(String[] args) {
+        TrafficLight tl1 = new TrafficLight();
+    }
+
 }
