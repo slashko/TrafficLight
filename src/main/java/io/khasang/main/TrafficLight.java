@@ -34,8 +34,17 @@ public class TrafficLight {
                     System.out.println("Сколько минут горит " + o.getKey() + "?");
                     timeColor.put(o.getKey(), Integer.parseInt(reader.readLine()) * MIN);
                     break;
-                } catch (NumberFormatException | IOException e1) {
+                } catch (NumberFormatException e) {
                     System.out.println("Это не число");
+                } catch (IOException e1) {
+                    System.out.println("Ошибка ввода/ввывода!");
+                    System.exit(0);
+                } finally {
+                    try {
+                        reader.close();
+                    } catch (IOException e2) {
+                        System.out.println("Ошибка закрытия потока");
+                    }
                 }
             }
         }
